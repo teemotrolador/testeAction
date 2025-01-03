@@ -16,7 +16,7 @@ jobs:
         with:
           host: "82.112.245.91"
           username: "root"
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: "Willi@m91478751"
           source: "."
           target: "/sistema"
 
