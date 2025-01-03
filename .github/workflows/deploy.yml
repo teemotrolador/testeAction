@@ -12,11 +12,11 @@ steps:
 
   - name: "copy file via ssh password"
     uses: teemotrolador/scp-action@v0.1.7
-      with:
-        host: 82.112.245.91
-        username: "root"
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        source: "."
-        target: "/sistema"
+    with:
+      host: 82.112.245.91
+      username: "root"
+      key: ${{ secrets.SSH_PRIVATE_KEY }}
+      source: "."
+      target: "/sistema"
 
   
