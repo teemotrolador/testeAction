@@ -1,23 +1,12 @@
 name: "Deploy para VPS"
+
 on:
   push:
-    branches:
-      - main
-jobs:
-  build_deploy:
-    runs-on: ubuntu-latest
+    branches: [master]
+  pull_request:
+    branches: [master]
+  
+  workflow_dispatch:
 
-    steps:
-      - name: "baixar o código"
-        uses: actions@checkout@v4
-
-      - name: "copy file via ssh password"
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: "82.112.245.91"
-          username: "root"
-          password: "Willi@m91478751"
-          source: "."
-          target: "/sistema"
 
   
