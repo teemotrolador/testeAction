@@ -11,8 +11,7 @@ steps:
   - uses: actions@checkout@v4
 
   - name: "copy file via ssh password"
-  - uses: actions/checkout@v4
-      uses: teemotrolador/scp-action@v0.1.7
+    uses: teemotrolador/scp-action@v0.1.7
       with:
         host: 82.112.245.91
         username: "root"
