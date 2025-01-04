@@ -1,13 +1,24 @@
-name: Teste de Conexão SSH
-
-on: 
-    workflow_dispatch:
-
-jobs:
-  ssh-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Teste de Conexão SSH
-        run: ssh -i ${{secrets.SSH_PRIVATE_KEY}} -o StrictHostKeyChecking=no root@srv611531.hstgr.cloud "echo 'Conexão SSH bem-sucedida'"
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+name: Deploy 🚀
+    on:
+      push:
+        branches:
+          - master
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v2
+          - name: Install Node.js
+            uses: actions/setup-node@v2
+            with:
+              node-version: '16.x'
+          - name: Install dependencies
+            run: npm install
+          - name: Build project
+            run: npm run build
+          - name: SSH Deploy
+            run: |
+              sshpass -p ${{ secrets.PSWD }} ssh -o StrictHostKeyChecking=no -p 22 ${{ secrets.USER}}@${{ secrets.VPS_IP }} 'cd /home/adam && ./deploy.sh'
+            env:
+              SSHPASS: ${{ secrets.PSWD }}
