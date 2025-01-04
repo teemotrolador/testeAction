@@ -21,7 +21,7 @@ jobs:
     environment: 
       name: development
       url: ${{vars.TARGET}}
-    needs: deploy-development
+    #needs: deploy-development
     steps:
       - name: Repo Checkout
         uses: actions/checkout@v2
