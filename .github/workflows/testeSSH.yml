@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Teste de Conexão SSH
-        run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@srv611531.hstgr.cloud "echo 'Conexão SSH bem-sucedida'"
+        run: ssh -i ${{secrets.SSH_PRIVATE_KEY}} -o StrictHostKeyChecking=no root@srv611531.hstgr.cloud "echo 'Conexão SSH bem-sucedida'"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
