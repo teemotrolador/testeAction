@@ -1,4 +1,4 @@
-name: "Deploy para VPS 4"
+name: "Deploy para VPS 2"
 
 on:
   push:
