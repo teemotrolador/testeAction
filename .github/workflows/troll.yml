@@ -14,9 +14,10 @@ jobs:
       - name: multiple command
         uses: appleboy/ssh-action@v1.2.0
         with:
-          host: ${{ vars.remote_host }}
+          host: ${{ secrets.SSH_HOST}}
           username: ${{ vars.remote_user }}
           key: ${{ secrets.SSH_PRIVATE_KEY}}
           port: 22
           script: |
+            whoami
             ls -al
