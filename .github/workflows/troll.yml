@@ -1,10 +1,23 @@
-- name: multiple command
-  uses: appleboy/ssh-action@v1.2.0
-  with:
-    host: ${{ secrets.HOST }}
-    username: ${{ secrets.USERNAME }}
-    key: ${{ secrets.KEY }}
-    port: ${{ secrets.PORT }}
-    script: |
-      whoami
-      ls -al
+name: multiple command
+
+on:
+    push:
+      branches:
+        - main
+    pull_request:
+      branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: multiple command
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ vars.remote_host }}
+          username: ${{ vars.remote_user }}
+          key: ${{ secrets.SSH_PRIVATE_KEY}}
+          port: 22
+          script: |
+            whoami
+            ls -al
