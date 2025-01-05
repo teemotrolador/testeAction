@@ -9,7 +9,7 @@ jobs:
       - name: Copy single file to remote
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: ./index.php
+          local: chora/hello.txt
           remote: scp/single/oof.txt
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.USER }}
