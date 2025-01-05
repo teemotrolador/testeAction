@@ -21,7 +21,7 @@ jobs:
           host: ${{ vars.HOST }}
           username: ${{ vars.USERNAME }}
           key:  ${{ vars.SSHKEY }}
-          # password: ${{ vars.PSW }}
+          password: ${{ vars.PSW }}
           port: ${{ vars.PORT }}
           source: "./*"
           target: /irineu/
