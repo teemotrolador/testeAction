@@ -24,15 +24,4 @@ jobs:
           ssh-keyscan -t rsa ${{ vars.HOST }} >> ~/.ssh/known_hosts
           ssh ${{ vars.USERNAME }}@${{ vars.HOST }} "cd ${{ home/projeto3 }} && git pull origin main"
           echo "Successfully pulled repo."
-
-      - name: Check Nginx configuration
-        run: |
-          echo "Checking nginx config"
-          ssh ${{ vars.SSHKEY }}@${{ vars.HOST }} "sudo /usr/sbin/nginx -t 2>&1"
-          echo "Nginx configuration check completed."
-
-      - name: Restart Nginx service
-        if: success()
-        run: |
-          ssh ${{ vars.USERNAME }}@${{ vars.HOST }} "sudo /bin/systemctl restart nginx"
-          echo "Nginx service restarted successfully"        
+   
