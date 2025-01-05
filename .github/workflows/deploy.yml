@@ -16,7 +16,8 @@ jobs:
         PORT: ${{ vars.PORT }}
         KEY: ${{ vars.SSHKEY }}
         source: "."
-        target: "~/teste"
+        target: "~/home/"
+        rm: true
         overwrite: true
         strip_components: 1
 
