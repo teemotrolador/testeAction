@@ -8,6 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: configure stuff
+      uses: appleboy/ssh-action@master
+      with:
+        HOST: ${{ vars.HOST }}
+        USERNAME: ${{ vars.USERNAME }}
+        PORT: ${{ vars.PORT }}
+        KEY: ${{ vars.SSHKEY }}
+        script: |
+          export TERM=xterm
+
+    
     - uses: actions/checkout@v1
 
     - name: Copy repository contents via scp
