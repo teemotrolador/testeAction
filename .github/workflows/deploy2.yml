@@ -17,7 +17,7 @@ jobs:
         USERNAME: ${{ vars.USERNAME }}
         PORT: ${{ vars.PORT }}
         KEY: ${{ vars.SSHKEY }}
-        source: "."
+        source: "/arquivos/foiBitch.txt"
         target: "teste"
 
     - name: Executing remote command
