@@ -1,16 +1,15 @@
-name: Copy File Workflow 234
-
+name: remote ssh command
 on: [push]
-
 jobs:
-  copy-file:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Copy single file to remote
-        uses: garygrossgarten/github-action-scp@release
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.2.0
         with:
-          local: /chora/hello.txt
-          remote: srv611531.hstgr.cloud
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.USER }}
+          username: root
           password: ${{ secrets.PSWD }}
+          port: ${{ secrets.PORT }}
+          script: whoami
