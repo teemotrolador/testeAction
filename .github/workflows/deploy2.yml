@@ -11,9 +11,9 @@ jobs:
     - name: copy file via ssh password
       uses: appleboy/scp-action@v0.1.7
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.SSH_USER }}
-        password: ${{ secrets.PASSWORD }}
+        host: ${{ vars.HOST }}
+        username: ${{ vars.USERNAME }}
+        password: ${{ vars.PSW }}
         port: 22
         source: "arquivos/foiBitch.txt"
         target: home/projeto2
