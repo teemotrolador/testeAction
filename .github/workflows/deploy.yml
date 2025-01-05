@@ -26,6 +26,6 @@ jobs:
       with:
         host: ${{ vars.HOST }}
         USERNAME: ${{ vars.USERNAME }}
-        PORT: ${{ vars.PORT }}
+        #PORT: ${{ vars.PORT }}
         KEY: ${{ vars.SSHKEY }}
         script: ls
