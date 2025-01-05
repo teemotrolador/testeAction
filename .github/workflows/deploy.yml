@@ -1,24 +1,28 @@
+env:
+  BUILD_NAME: "${{ github.RUN_ID }}_${{ github.RUN_NUMBER }}"
+  BUILD_NAME_EXT: "${{ github.RUN_ID }}_${{ github.RUN_NUMBER }}.tar.gz"
+  
 name: Deployed
 
 on: [push]
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Copy repository contents via scp
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        HOST: ${{ vars.HOST }}
-        USERNAME: ${{ vars.USERNAME }}
-        PORT: ${{ vars.PORT }}
-        KEY: ${{ vars.SSHKEY }}
-        source: "."
-        target: "~/home/www.digitalmegaofertas.com/public_html/"
-        rm: true
-        overwrite: true
-        strip_components: 1
-
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.BUILD_NAME }}
+      - name: Deploy
+        uses: appleboy/scp-action@master
+        with:
+          HOST: ${{ vars.HOST }}
+          USERNAME: ${{ vars.USERNAME }}
+          PORT: ${{ vars.PORT }}
+          KEY: ${{ vars.SSHKEY }}
+          source: "."
+          target: "~/home/www.docker.digitalmegaofertas.com/src/"
+          overwrite: true
+          timeout: 1m
 
