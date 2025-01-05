@@ -18,7 +18,7 @@ jobs:
         #PORT: ${{ vars.PORT }}
         KEY: ${{ vars.SSHKEY }}
         source: "."
-        target: "/home"
+        target: "/home/www.digitalmegaofertas.com"
 
     - name: Executing remote command
       uses: appleboy/ssh-action@master
