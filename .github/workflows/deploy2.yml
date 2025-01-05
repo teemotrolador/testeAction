@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         local: .
-        remote: home/projeto2
+        remote: home/projeto2/
         host: ${{ secrets.HOST }}
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.PASSWORD }}
