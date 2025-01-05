@@ -1,19 +1,27 @@
-name: Upa File 3
+name: Copy files with SCP
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  build:
-
+  copy:
     runs-on: ubuntu-latest
-
+    
     steps:
-    - name: copy file via ssh password
-      uses: appleboy/scp-action@v0.1.7
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Copy to Remote Server
+      uses: pierrickdelrieu/scp-action@v0.1.0
       with:
         host: ${{ vars.HOST }}
-        username: ${{ vars.USERNAME }}
-        password: ${{ vars.PSW }}
-        port: 22
-        source: "arquivos/foiBitch.txt"
-        target: home/projeto2
+        ssh_port: 22
+        ssh_username: ${{ vars.USERNAME }}
+        ssh_key: ${{ vars.SSHKEY }}
+        ssh_passphrase: ${{ vars.PSW }}
+        source_dir: "arquivos"
+        destination_dir: home/projeto3
+        rm: true
