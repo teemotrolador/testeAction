@@ -19,12 +19,3 @@ jobs:
         KEY: ${{ vars.SSHKEY }}
         source: "."
         target: "teste"
-
-    - name: Executing remote command
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ vars.HOST }}
-        USERNAME: ${{ vars.USERNAME }}
-        #PORT: ${{ vars.PORT }}
-        KEY: ${{ vars.SSHKEY }}
-        script: ls
