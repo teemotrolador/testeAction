@@ -1,4 +1,4 @@
-name: Deployed
+name: Deployed 1
 
 on: [push]
 
