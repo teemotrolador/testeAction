@@ -14,7 +14,7 @@ jobs:
           PORT: ${{ vars.PORT }}
           KEY: ${{ vars.SSHKEY }}
           source: "."
-          target: "~/home/www.docker.digitalmegaofertas.com/src/"
+          target: "~/root/"
           overwrite: true
           timeout: 1m
 
