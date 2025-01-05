@@ -1,7 +1,3 @@
-env:
-  BUILD_NAME: "${{ github.RUN_ID }}_${{ github.RUN_NUMBER }}"
-  BUILD_NAME_EXT: "${{ github.RUN_ID }}_${{ github.RUN_NUMBER }}.tar.gz"
-  
 name: Deployed
 
 on: [push]
@@ -10,10 +6,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: ${{ env.BUILD_NAME }}
       - name: Deploy
         uses: appleboy/scp-action@master
         with:
