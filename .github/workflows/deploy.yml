@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: appleboy/scp-action@v0.1.7
 
     - name: Copy repository contents via scp
       uses: appleboy/scp-action@209e8c05e0492f6ed6fe8a22dfcaefb083c4cf35
@@ -18,4 +18,6 @@ jobs:
         PORT: ${{ vars.PORT }}
         KEY: ${{ vars.SSHKEY }}
         source: "."
-        target: "teste"
+        target: "~/teste"
+
+
