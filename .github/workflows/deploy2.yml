@@ -1,4 +1,4 @@
-name: Deployed 1
+name: Deployed
 
 on: [push]
 
@@ -17,8 +17,8 @@ jobs:
         USERNAME: ${{ vars.USERNAME }}
         PORT: ${{ vars.PORT }}
         KEY: ${{ vars.SSHKEY }}
-        source: "arquivos/foiBitch.txt"
-        target: "teste"
+        source: "/arquivos/foiBitch.txt"
+        target: "home/teste/"
 
     - name: Executing remote command
       uses: appleboy/ssh-action@master
