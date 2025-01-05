@@ -15,11 +15,11 @@ jobs:
       env:
         HOST: ${{ vars.HOST }}
         USERNAME: ${{ vars.USERNAME }}
-        #PORT: ${{ vars.PORT }}
+        PORT: ${{ vars.PORT }}
         KEY: ${{ vars.SSHKEY }}
       with:
         source: "."
-        target: "/var/www/mywebsite"
+        target: "/home"
 
     - name: Executing remote command
       uses: appleboy/ssh-action@master
