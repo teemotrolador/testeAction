@@ -14,7 +14,9 @@ jobs:
           PORT: ${{ vars.PORT }}
           KEY: ${{ vars.SSHKEY }}
           source: "."
-          target: "~/root/"
+          target: "~/rootzin/"
           overwrite: true
           timeout: 1m
+
+
 
