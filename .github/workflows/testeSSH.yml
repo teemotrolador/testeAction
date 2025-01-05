@@ -1,14 +1,16 @@
-name: Deploy 23 🚀
-on:
-    push:
-    branches:
-        - master
+name: Copy File Workflow
+
+on: [push]
+
 jobs:
-    deploy:
+  copy-file:
     runs-on: ubuntu-latest
     steps:
-        - name: SSH Deploy
-        run: |
-            sshpass -p ${{ secrets.PSWD }} ssh -o StrictHostKeyChecking=no -p 22 ${{ secrets.USER}}@${{ secrets.VPS_IP }} 'cd ~/home/srv611531.hstgr.cloud'
-        env:
-            SSHPASS: ${{ secrets.PSWD }}
+      - name: Copy single file to remote
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: ./index.php
+          remote: scp/single/oof.txt
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PSWD }}
