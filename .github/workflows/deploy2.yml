@@ -17,8 +17,8 @@ jobs:
         USERNAME: ${{ vars.USERNAME }}
         PORT: ${{ vars.PORT }}
         KEY: ${{ vars.SSHKEY }}
-        source: "/arquivos/foiBitch.txt"
-        target: "~/home/teste2/"
+        source: "."
+        target: "~/home/teste3/"
 
     - name: Executing remote command
       uses: appleboy/ssh-action@master
