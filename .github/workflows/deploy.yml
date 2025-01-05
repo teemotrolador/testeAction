@@ -1,4 +1,4 @@
-name: Deployed
+name: Checkout
 
 on: [push]
 
@@ -6,27 +6,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: copy files to server
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Get changed files check
+        uses: actions/checkout@v4
+        id: changed-files
+      - name: Get changed files
+        uses: tj-actions/changed-files@v35
         with:
-          server: ${{ vars.HOST }}
+          since_last_remote_commit: true
+          separator: ","
+        
+      - name: copy file to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ vars.HOST }}
           username: ${{ vars.USERNAME }}
-          password: ${{ vars.PSW }}
-          local-dir: "./"
-          server-dir: ~/testo/
-          security: loose
-          protocol: ftps
-                
-      - name: configure stuff
-        uses: appleboy/ssh-action@master
-        with:
-          HOST: ${{ vars.HOST }}
-          USERNAME: ${{ vars.USERNAME }}
-          PORT: ${{ vars.PORT }}
-          KEY: ${{ vars.SSHKEY }}
-          script: |
-            cd /home/github/ftp/upload/teemotrolador/testeAction
-            tar -xf ./myFile.tar
+          key:  ${{ vars.SSHKEY }}
+          # password: ${{ vars.PSW }}
+          port: ${{ vars.PORT }}
+          source: "./*"
+          target: /irineu/
 
 
 
