@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Copy folder content recursively to remote
-      uses: actions/checkout@v4
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@v0.1.7
       with:
-        local: .
-        remote: home/projeto2/
         host: ${{ secrets.HOST }}
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.PASSWORD }}
-        privateKey: ${{ secrets.PRIVATE_KEY}}
+        port: 22
+        source: "arquivos/foiBitch.txt"
+        target: home/projeto2
