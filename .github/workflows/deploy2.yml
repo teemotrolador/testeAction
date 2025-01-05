@@ -17,15 +17,6 @@ jobs:
         KEY: ${{ vars.SSHKEY }}
         script: |
           export TERM=xterm
-    
-    - name: Copy folder content recursively to remote
-      uses: garygrossgarten/github-action-scp@release
-      with:
-        local: .
-        remote: home/projeto
-        host: ${{ vars.HOST }}
-        username: ${{ vars.USERNAME }}
-        password: ${{ vars.PSW }}
 
 
     - name: Copy folder content recursively to remote
