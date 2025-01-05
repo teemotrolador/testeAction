@@ -8,17 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: configure stuff
-      uses: appleboy/ssh-action@master
-      with:
-        HOST: ${{ vars.HOST }}
-        USERNAME: ${{ vars.USERNAME }}
-        PORT: ${{ vars.PORT }}
-        KEY: ${{ vars.SSHKEY }}
-        script: |
-          export TERM=xterm
-
-
     - name: Copy folder content recursively to remote
       uses: actions/checkout@v4
       with:
