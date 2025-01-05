@@ -28,14 +28,7 @@ jobs:
         USERNAME: ${{ vars.USERNAME }}
         PORT: ${{ vars.PORT }}
         KEY: ${{ vars.SSHKEY }}
+        passphrase: ${{secrets.PSW}}
         source: "."
-        target: "~/home/teste3/"
-
-    - name: Executing remote command
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ vars.HOST }}
-        USERNAME: ${{ vars.USERNAME }}
-        #PORT: ${{ vars.PORT }}
-        KEY: ${{ vars.SSHKEY }}
-        script: ls
+        target: "~/home/teste4/"
+        strip_components: 2
