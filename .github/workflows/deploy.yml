@@ -11,7 +11,7 @@ jobs:
         with:
           server: ${{ vars.HOST }}
           username: ${{ vars.USERNAME }}
-          password: ${{ secrets.PSW }}
+          password: ${{ vars.PSW }}
           local-dir: "./"
           server-dir: ~/testo/
           security: loose
