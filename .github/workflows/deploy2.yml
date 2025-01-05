@@ -21,8 +21,8 @@ jobs:
     - name: Copy folder content recursively to remote
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: ./
-        remote: home/
+        local: arquivos/foiBitch.txt
+        remote: home/projeto/foiBitch.txt
         host: ${{ vars.HOST }}
         username: ${{ vars.USERNAME }}
         password: ${{ vars.PSW }}
