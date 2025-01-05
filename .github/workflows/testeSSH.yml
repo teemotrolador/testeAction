@@ -9,8 +9,8 @@ jobs:
       - name: Copy single file to remote
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: chora/hello.txt
-          remote: ~/home/srv611531.hstgr.cloud/hello.txt
+          local: /chora/hello.txt
+          remote: srv611531.hstgr.cloud
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PSWD }}
